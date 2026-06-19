@@ -1,0 +1,41 @@
+<div class="home-container">
+
+    <!-- MENU HAMBÚRGUER -->
+    <button class="menu-btn" (click)="abrirMenu()">
+        ☰
+    </button>
+
+    <!-- MENU LATERAL -->
+    <div class="sidebar" [class.aberta]="menuAberto">
+
+        <img src="img/ford.png" alt="Ford" class="logo">
+
+        <a routerLink="/home">Home</a>
+
+        <a routerLink="/dashboard">Dashboard</a>
+
+        <a (click)="logout()" class="logout">
+            Logout
+        </a>
+
+    </div>
+
+    <!-- FUNDO ESCURO -->
+    <div
+        class="overlay"
+        *ngIf="menuAberto"
+        (click)="fecharMenu()">
+    </div>
+
+    <!-- CARTÃO -->
+    <div class="card-bem-vindo">
+
+        <h5>Sistema de dados FORD</h5>
+
+        <p>Seja bem-vindo(a)!</p>
+
+       
+
+    </div>
+
+</div>

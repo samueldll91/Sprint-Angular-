@@ -1,1 +1,88 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+
+  <!-- 🔎 BUSCA POR MODELO -->
+  <div class="search-card">
+    <h2>Buscar veículo</h2>
+
+    <input
+      type="text"
+      placeholder="Digite o modelo do veículo"
+      [(ngModel)]="modelSearch"
+      (input)="filterModels()">
+
+    <ul *ngIf="filteredModels.length > 0" class="dropdown">
+      <li *ngFor="let model of filteredModels"
+          (click)="selectModel(model)">
+        {{ model.vehicle }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- 📊 CARDS -->
+  <div class="cards">
+
+    <div class="card">
+      <h3>Total de vendas</h3>
+      <p>{{ selectedVehicle?.volumetotal || 0 }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Conectados</h3>
+      <p>{{ selectedVehicle?.connected || 0 }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Software atualizado</h3>
+      <p>{{ selectedVehicle?.softwareUpdates || 0 }}</p>
+    </div>
+
+  </div>
+
+  <!-- 🚗 IMAGEM -->
+  <div class="vehicle-image">
+    <img
+      *ngIf="selectedVehicle?.img"
+      [src]="selectedVehicle.img"
+      [alt]="selectedVehicle.vehicle">
+  </div>
+
+  <!-- 📋 TABELA -->
+  <div class="table-section">
+
+    <h2>Buscar veículo por código</h2>
+
+    <input
+      type="text"
+      placeholder="Ex: 2FRHDUYS2Y63NHD22454"
+      [(ngModel)]="vinSearch"
+      (keyup.enter)="searchByVin()">
+
+    <button (click)="searchByVin()">
+      Buscar
+    </button>
+
+    <table *ngIf="vehicleData">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Odômetro</th>
+          <th>Combustível</th>
+          <th>Status</th>
+          <th>Localização</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ vehicleData.id }}</td>
+          <td>{{ vehicleData.odometro }}</td>
+          <td>{{ vehicleData.nivelCombustivel }}%</td>
+          <td>{{ vehicleData.status }}</td>
+          <td>{{ vehicleData.lat }}, {{ vehicleData.long }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
