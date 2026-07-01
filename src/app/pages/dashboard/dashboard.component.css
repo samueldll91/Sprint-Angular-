@@ -108,3 +108,37 @@ td {
 th {
   background: #f5f5f5;
 }
+.vehicle-selector{
+    width:150px;
+}
+
+.vehicle-selector label{
+    display:block;
+    margin-bottom:5px;
+    font-size:12px;
+    color:#666;
+}
+
+.vehicle-selector select{
+    width:100%;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:3px;
+    background:white;
+}
+.top-bar{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 30px;
+}
+
+.logout{
+    color: #7cb342;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.logout:hover{
+    text-decoration: underline;
+}

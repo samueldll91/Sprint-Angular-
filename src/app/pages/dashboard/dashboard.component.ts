@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'; // <-- ADICIONE
 import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
@@ -28,7 +29,10 @@ export class DashboardComponent implements OnInit {
   vinSearch: string = '';
   vehicleData: any = null;
 
-  constructor(private vehicleService: VehicleService) {}
+  constructor(
+    private vehicleService: VehicleService,
+    private router: Router // <-- ADICIONE
+  ) {}
 
   ngOnInit(): void {
     this.loadVehicles();
@@ -84,6 +88,12 @@ export class DashboardComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  // LOGOUT
+  logout() {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
   }
 
   // Cards do dashboard
